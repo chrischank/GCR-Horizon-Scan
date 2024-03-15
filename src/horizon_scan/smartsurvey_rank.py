@@ -2,7 +2,7 @@
 #SmartSurvey horizon scan r1 ranking#
 #Maintainer: Christopher Chan       #
 #Date: 2024-02-15                   #
-#Version: 0.1.2                     #
+#Version: 0.2.2                     #
 #####################################
 
 import os, sys, re
@@ -19,6 +19,7 @@ from pathlib import Path
 data_raw = Path("./data/01_raw")
 data_intermediate = Path("./data/02_intermediate")
 data_output = Path("./data/07_model_output")
+figure_output = Path("./docs/figures/round_1")
 
 
 def parse_arguments():
@@ -91,7 +92,44 @@ def neglected_heardof(df:pd.DataFrame, r1_long:pd.DataFrame) -> pd.DataFrame:
     return r1_neg_heard2
 
 
-#def plotting():
+def donut_plot(df:pd.DataFrame, r1_long:pd.DataFrame):
+    df["neg_count"] = df["Neglected_perc_YES"] / 100 * len(r1_long["Name"].unique())
+    df["heardof_count"] = df["Heard_of_perc_YES"] / 100 * len(r1_long["Name"].unique())
+
+    for idx, issue in df.iterrows():
+        i_name = issue["Issue"]
+        i_name2 = i_name.replace(" ", "_").replace("/", "or")
+
+        fig, ax = plt.subplots(1,2, figsize = (25, 10))
+
+        donut_negC = ["r", "g"]
+        donut_hfC = ["b", "y"]
+
+        plt.rcParams["text.color"] = "darkblue"
+        plt.rcParams['font.weight'] = 'bold'
+        plt.rcParams.update({'font.size': 12})
+
+        # Plotting the first donut plot
+        ax[0].pie([issue["neg_count"], len(r1_long["Name"].unique()) - issue["neg_count"]],
+                  labels=["Yes", "No"], colors=donut_negC, autopct="%0.0f%%",
+                  wedgeprops={"linewidth": 7, "edgecolor": "white"})
+        donut_neg = plt.Circle((0, 0), 0.7, color="white")
+        ax[0].add_artist(donut_neg)
+        ax[0].set_title("Neglected")
+
+        # Plotting the second donut plot
+        ax[1].pie([issue["heardof_count"], len(r1_long["Name"].unique()) - issue["heardof_count"]],
+                  labels=["Yes", "No"], colors=donut_hfC, autopct="%0.0f%%",
+                  wedgeprops={"linewidth": 7, "edgecolor": "white"})
+        donut_hf = plt.Circle((0, 0), 0.7, color="white")
+        ax[1].add_artist(donut_hf)
+        ax[1].set_title("Heard of")
+
+        plt.suptitle(f"{i_name}")
+
+        plt.tight_layout()
+
+        plt.savefig(f"{figure_output}/{i_name2}_neg_HF.png")
 
 
 def main():
@@ -109,6 +147,8 @@ def main():
 
         r1_tally = pd.merge(median_rankDF, r1_neg_heard, how="inner", on="Issue")
         r1_tally.to_csv(f"{data_output}/r1_tally.csv", sep=",")
+
+        donut_plot(r1_neg_heard, r1_long)
 
 if __name__ == "__main__":
     main()

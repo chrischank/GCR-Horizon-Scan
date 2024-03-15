@@ -1,8 +1,8 @@
 #####################################
 #SmartSurvey horizon scan r1 ranking#
 #Maintainer: Christopher Chan       #
-#Date: 2024-02-14                   #
-#Version: 0.0.1                     #
+#Date: 2024-02-15                   #
+#Version: 0.1.1                     #
 #####################################
 
 import os, sys, re
@@ -38,13 +38,22 @@ def rank_median(df_path:Path) -> pd.DataFrame:
 
         r1_long = pd.melt(r1_score, id_vars=["Name"], value_vars=issue_ls2,
                           var_name="Issue", value_name="Score")
-        r1_rank = r1_long.groupby("Issue")["Score"].rank(ascending=False, method='average')
+        r1_long["Rank"] = r1_long.groupby("Name")["Score"].rank(ascending=False, method='average')
+        r1_long.sort_values(by=['Name', 'Score'], inplace=True, ascending=False)
 
         print(r1_long.head())
         r1_long.to_csv("../../data/02_intermediate/tidy_r1_score.csv", sep=",")
-        r1_rank.to_csv("../../data/02_intermediate/r1_rank.csv", sep=",")
 
-    return r1_long
+        # Take the median of each issue ranks
+        median_rankDF = r1_long.groupby("Issue")["Rank"].median()
+        median_rankDF = median_rankDF.to_frame(name="Median_rank")
+        median_rankDF["Final_rank"] = median_rankDF["Median_rank"].rank(ascending=True, method='average')
+        median_rankDF.sort_values(by="Final_rank", inplace=True)
+
+        print(median_rankDF.head())
+        median_rankDF.to_csv("../../data/02_intermediate/r1_medianrank.csv", sep=",")
+
+    return r1_long, median_rankDF
 
 #def plotting():
 

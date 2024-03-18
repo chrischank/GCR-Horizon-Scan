@@ -1,8 +1,8 @@
 #####################################
 #SmartSurvey horizon scan r1 ranking#
 #Maintainer: Christopher Chan       #
-#Date: 2024-02-15                   #
-#Version: 0.2.2                     #
+#Date: 2024-02-18                   #
+#Version: 0.2.3                     #
 #####################################
 
 import os, sys, re
@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from pathlib import Path
+from datetime import date
 
 # data paths
 data_raw = Path("./data/01_raw")
@@ -46,7 +47,7 @@ def rank_median(df:pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     r1_long.sort_values(by=['Name', 'Score'], inplace=True, ascending=False)
 
     print(r1_long.head())
-    r1_long.to_csv(f"{data_intermediate}/tidy_r1_score.csv", sep=",")
+    r1_long.to_csv(f"{data_intermediate}/{date.today()}_tidy_r1_score.csv", sep=",")
 
     # Take the median of each issue ranks
     median_rankDF = r1_long.groupby("Issue")["Rank"].median()
@@ -142,11 +143,11 @@ def main():
         r1_long, median_rankDF = rank_median(r1_df)
         r1_neg_heard = neglected_heardof(r1_df, r1_long)
 
-        median_rankDF.to_csv(f"{data_intermediate}/r1_medianrank.csv", sep=",")
-        r1_neg_heard.to_csv(f"{data_intermediate}/r1_neg_heardof.csv", sep=",")
+        median_rankDF.to_csv(f"{data_intermediate}/{date.today()}_r1_medianrank.csv", sep=",")
+        r1_neg_heard.to_csv(f"{data_intermediate}/{date.today()}_r1_neg_heardof.csv", sep=",")
 
         r1_tally = pd.merge(median_rankDF, r1_neg_heard, how="inner", on="Issue")
-        r1_tally.to_csv(f"{data_output}/r1_tally.csv", sep=",")
+        r1_tally.to_csv(f"{data_output}/{date.today()}_r1_tally.csv", sep=",")
 
         donut_plot(r1_neg_heard, r1_long)
 

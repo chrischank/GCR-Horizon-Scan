@@ -1,0 +1,13 @@
+issue_id;issue;category;voter_id;voter_domain;score;HS_round;notes
+3;Price instability;Nuclear;1;Nuclear;700/1000;2;
+4;Permafrost pathogen;Biosecurity;1;Nuclear;680/1000;2;
+6;Gain of function;Biosecurity;1;Nuclear;900/1000;2;
+3;Price instability;Nuclear;2;Biosecurity;980/1000;2;
+4;Permafrost pathogen;Biosecurity;2;Biosecurity;750/1000;2;
+6;Gain of function;Biosecurity;2;Biosecurity;780/1000;2;
+3;Price instability;Nuclear;3;Driver_xrisk;790/1000;2;
+4;Permafrost pathogen;Biosecurity;3;Driver_xrisk;800/1000;2;
+6;Gain of function;Biosecurity;3;Driver_xrisk;840/1000;2;
+3;Price instability;Nuclear;4;Food_security;670/1000;2;
+4;Permafrost pathogen;Biosecurity;4;Food_security;800/1000;2;
+6;Gain of function;Biosecurity;4;Food_security;1000/1000;2;

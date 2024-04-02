@@ -1,0 +1,25 @@
+issue_id;issue;category;voter_id;voter_domain;score;HS_round;notes
+1;Superrotation;Climate;1;Nuclear;200/1000;1;
+2;Trade breakdown;Nuclear;1;Nuclear;700/1000;1;
+3;Price instability;Nuclear;1;Nuclear;800/1000;1;
+4;Permafrost pathogen;Biosecurity;1;Nuclear;600/1000;1;
+5;AI in weapon system;AI;1;Nuclear;400/1000;1;
+6;Gain of function;Biosecurity;1;Nuclear;900/1000;1;
+1;Superrotation;Climate;2;Biosecurity;450/1000;1;
+2;Trade breakdown;Nuclear;2;Biosecurity;550/1000;1;
+3;Price instability;Nuclear;2;Biosecurity;800/1000;1;
+4;Permafrost pathogen;Biosecurity;2;Biosecurity;850/1000;1;
+5;AI in weapon system;AI;2;Biosecurity;900/1000;1;
+6;Gain of function;Biosecurity;2;Biosecurity;500/1000;1;
+1;Superrotation;Climate;3;Drivers_xrisk;100/1000;1;
+2;Trade breakdown;Nuclear;3;Drivers_xrisk;800/1000;1;
+3;Price instability;Nuclear;3;Drivers_xrisk;400/1000;1;
+4;Permafrost pathogen;Biosecurity;3;Drivers_xrisk;660/1000;1;
+5;AI in weapon system;AI;3;Drivers_xrisk;350/1000;1;
+6;Gain of function;Biosecurity;3;Drivers_xrisk;699/1000;1;
+1;Superrotation;Climate;4;Food_security;100/1000;1;
+2;Trade breakdown;Nuclear;4;Food_security;500/1000;1;
+3;Price instability;Nuclear;4;Food_security;800/1000;1;
+4;Permafrost pathogen;Biosecurity;4;Food_security;590/1000;1;
+5;AI in weapon system;AI;4;Food_security;390/1000;1;
+6;Gain of function;Biosecurity;4;Food_security;700/1000;1;

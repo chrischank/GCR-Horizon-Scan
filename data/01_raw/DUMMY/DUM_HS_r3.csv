@@ -1,0 +1,9 @@
+issue_id;issue;category;voter_id;voter_domain;score;HS_round;notes
+6;Gain of function;Biosecurity;1;Nuclear;700/1000;3;
+4;Permafrost pathogen;Biosecurity;1;Nuclear;790/10000;3;
+6;Gain of function;Biosecurity;2;Biosecurity;970/1000;3;
+4;Permafrost pathogen;Biosecurity;2;Biosecurity;890/1000;3;
+6;Gain of function;Biosecurity;3;Driver_xrisk;750/1000;3;
+4;Permafrost pathogen;Biosecurity;3;Driver_xrisk;900/1000;3;
+6;Gain of function;Biosecurity;4;Food_security;800/1000;3;
+4;Permafrost pathogen;Biosecurity;4;Food_security;900/1000;3;

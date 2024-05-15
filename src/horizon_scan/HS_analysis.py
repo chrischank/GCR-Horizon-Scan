@@ -51,7 +51,7 @@ def score_sample(df:pd.DataFrame) -> pd.DataFrame:
     misc_cols = df.filter(regex="rank|score").columns
     HS_justScore = df.drop(misc_cols, axis = 1)
 
-    return HS_justScore.sample(n = 8)
+    return HS_justScore
 
 def score_Ldf(df:pd.DataFrame) -> pd.DataFrame:
     justScore_Ldf = pd.melt(df, id_vars=["Issue", "Issue_cat"], var_name='Participant', value_name='Score')

@@ -71,6 +71,8 @@ def plot_model(df:pd.DataFrame) -> (list, list):
     r1_exp = []
     r2_exp = []
 
+    print(df['Issue_cat'].unique())
+
 
     for idx, cat in enumerate(df['Issue_cat'].unique()):
         palette_ls = ['Set3', 'Set2', 'Paired', 'Accent', 'Dark2', 'Set1',

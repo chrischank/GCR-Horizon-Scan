@@ -102,8 +102,8 @@ pytest
 
 ## Contributors
 
-This project was developed by [Your Organization/Team Name].
+This project was developed by [Odyssean Institute].
 
 ## License
 
-[Specify license information]
+[MIT License](LICENSE)

@@ -72,6 +72,34 @@ The repository includes several notebooks for exploratory data analysis and visu
 jupyter notebook notebooks/
 ```
 
+## Running Analysis Scripts
+
+### SmartSurvey Ranking Analysis
+
+To process round 1 survey data and generate rankings:
+
+```bash
+python src/horizon_scan/smartsurvey_rank.py --r1 path/to/round1_data.csv
+```
+
+This script will:
+- Generate median rank calculations
+- Create "Neglected" and "Heard of" metrics
+- Generate donut charts for each issue
+
+### Horizon Scan Analysis
+
+To analyze data across multiple rounds and generate visualizations:
+
+```bash
+python src/horizon_scan/HS_analysis.py --r1 path/to/round1_results.csv --r2 path/to/round2_results.csv
+```
+
+This script will:
+- Perform weighted least squares analysis
+- Generate category subplot charts
+- Create lollipop charts showing score shifts between rounds
+
 ## Testing
 
 Run the test suite with:

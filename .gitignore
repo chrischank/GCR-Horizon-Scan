@@ -1,6 +1,10 @@
 ##########################
 # KEDRO PROJECT
 
+# Ignore hashing notebook
+notebooks/result_hash.ipynb
+ssrn_Horizon_Scan.pdf
+
 # ignore all local configuration
 conf/local/**
 !conf/local/.gitkeep
